@@ -307,7 +307,92 @@ p{max-width:65ch}
   padding-bottom:1px;
 }
 
-/* =========== PROJECTS =========== */
+/* =========== TILES =========== */
+.tiles{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:clamp(10px,1.3vw,18px);
+}
+@media (max-width:980px){.tiles{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:680px){.tiles{grid-template-columns:repeat(2,1fr)}}
+
+.tile{
+  position:relative;
+  display:block;
+  padding:0;
+  border:0;
+  background:none;
+  font:inherit;
+  color:inherit;
+  text-align:left;
+  cursor:pointer;
+  border-radius:14px;
+  overflow:hidden;
+  isolation:isolate;
+}
+.tile img{
+  width:100%;
+  aspect-ratio:4/5;
+  object-fit:cover;
+  display:block;
+  background:var(--frame-a);
+  transition:transform .5s cubic-bezier(.2,.7,.2,1),filter .3s ease;
+}
+/* wordmarks and dielines must not be cropped — fit them inside the tile */
+.tile img.fit{object-fit:contain;background:#0B0B0B;padding:11% 8% 16%}
+.lb__gal img.fit{background:#0B0B0B;object-fit:contain;aspect-ratio:16/10}
+.tile:hover img,.tile:focus-visible img{transform:scale(1.045)}
+.tile__cap{
+  position:absolute;inset:auto 0 0 0;
+  padding:34px 14px 13px;
+  background:linear-gradient(to top,rgba(10,5,2,.82),transparent);
+  color:#F7F1E3;
+  display:flex;flex-direction:column;gap:2px;
+  transform:translateY(0);
+}
+.tile__cap b{font-size:.94rem;font-weight:700;letter-spacing:-.01em;line-height:1.15}
+.tile__cap span{font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;opacity:.82}
+.tile__count{
+  position:absolute;top:10px;right:10px;
+  font-size:.66rem;font-weight:700;letter-spacing:.08em;
+  background:rgba(10,5,2,.62);color:#F7F1E3;
+  padding:5px 9px;border-radius:999px;
+  backdrop-filter:blur(4px);
+}
+
+/* =========== LIGHTBOX =========== */
+.lb{
+  position:fixed;inset:0;z-index:80;
+  background:color-mix(in srgb,var(--slab-bg) 96%,black);
+  color:var(--slab-fg);
+  overflow-y:auto;
+  padding:clamp(14px,2.4vw,34px);
+}
+.lb[hidden]{display:none}
+.lb__close{
+  position:sticky;top:0;margin-left:auto;
+  display:flex;align-items:center;gap:8px;
+  font:inherit;font-size:.74rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+  background:var(--accent);color:var(--accent-fg);
+  border:0;border-radius:999px;padding:11px 20px;cursor:pointer;
+  z-index:2;
+}
+.lb__in{max-width:1100px;margin-inline:auto;padding-bottom:60px}
+.lb__head{display:grid;grid-template-columns:1fr auto;gap:20px 40px;align-items:end;margin:8px 0 26px}
+.lb__title{font-size:clamp(2.2rem,6vw,4.4rem);margin:0}
+.lb__kind{margin:0 0 10px;color:var(--slab-muted)}
+.lb__desc{max-width:60ch;margin:0;color:var(--slab-fg)}
+.lb__meta{display:flex;flex-direction:column;gap:16px;min-width:220px}
+.lb__gal{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(10px,1.4vw,18px);margin-top:clamp(24px,3vw,40px)}
+.lb__gal img,.lb__gal video{width:100%;border-radius:14px;display:block;background:var(--frame-b)}
+.lb__gal > *:first-child{grid-column:1 / -1}
+@media (max-width:700px){
+  .lb__head{grid-template-columns:1fr}
+  .lb__gal{grid-template-columns:1fr}
+}
+body.lb-open{overflow:hidden}
+
+/* =========== PROJECTS (legacy) =========== */
 .proj{
   display:grid;
   grid-template-columns:1.35fr 1fr;
@@ -701,258 +786,109 @@ a:focus-visible,button:focus-visible{
       <p class="label" style="color:var(--muted)">Shoots &amp; brand identity · 2023—2026</p>
     </div>
 
-    <article class="proj">
-      <div>
-        <video class="proj__hero" controls preload="none" playsinline poster="images/ysl/ysl-poster.jpg"><source src="video/ysl.mp4" type="video/mp4">Your browser cannot play this video.</video>
-      </div>
-      <div>
-        <p class="label proj__kind">Campaign video · Brand collaboration</p>
-        <h3 class="display proj__title">ysl beauty</h3>
-        <p class="proj__desc">
-          A social campaign film made in collaboration with YSL — shot on the coast, cut for
-          the feed. I did the makeup and the edit, which meant building a look that held up
-          in full sun, wind and salt air for a whole day of takes.
-        </p>
-        <ul class="proj__roles">
-          <li class="is-lead">Makeup</li>
-          <li>Editing</li>
-        </ul>
-        <div class="pal">
-          <div class="pal__row" role="img" aria-label="Palette: sky blue, pale steel, warm skin, antique gold, near black">
-            <i style="background:#A9C9DD"></i><i style="background:#CBD3D6"></i><i style="background:#C79A78"></i><i style="background:#B58B42"></i><i style="background:#14100F"></i>
-          </div>
-          <p class="pal__hex"><span>#A9C9DD</span><span>#CBD3D6</span><span>#C79A78</span><span>#B58B42</span><span>#14100F</span></p>
-        </div>
-      </div>
-    </article>
-
-    <article class="proj">
-      <div>
-        <img class="proj__hero" src="images/campaign/campaign-01.jpg" alt="Beauty campaign: serum applied on the cheek, close crop">
-        <div class="proj__thumbs">
-          <img src="images/campaign/campaign-02.jpg" alt="Dropper and serum bottle, macro">
-          <img src="images/campaign/campaign-03.jpg" alt="Model holding serum to face, eyes closed">
-          <img src="images/campaign/campaign-04.jpg" alt="Product held in hand against skin">
-          <img src="images/campaign/campaign-05.jpg" alt="Neck and collarbone with product">
-        </div>
-      </div>
-      <div>
-        <p class="label proj__kind">Campaign · Concept work</p>
-        <h3 class="display proj__title">the ordinary</h3>
-        <p class="proj__desc">
-          A campaign built on the brand's own logic: no gloss, no fantasy, just the product
-          on skin in daylight. Shot, directed and made up by me, so the makeup was planned
-          around what the camera needed rather than fixed afterwards.
-        </p>
-        <ul class="proj__roles">
-          <li class="is-lead">Creative direction</li>
-          <li>Photography</li>
-          <li>Makeup</li>
-        </ul>
-        <div class="pal">
-          <div class="pal__row" role="img" aria-label="Palette: warm greige, taupe, terracotta, deep brown, cream">
-            <i style="background:#C4B5AF"></i><i style="background:#AEA098"></i><i style="background:#BD8366"></i><i style="background:#9F6B50"></i><i style="background:#EFE7E0"></i>
-          </div>
-          <p class="pal__hex"><span>#C4B5AF</span><span>#AEA098</span><span>#BD8366</span><span>#9F6B50</span><span>#EFE7E0</span></p>
-        </div>
-      </div>
-    </article>
-
-    <article class="proj">
-      <div>
-        <img class="proj__hero" src="images/ordinary/ordinary-01.jpg" alt="The Ordinary shaving essentials cartons stacked">
-        <div class="proj__thumbs">
-          <img src="images/ordinary/ordinary-02.jpg" alt="Tertiary packaging dieline with product layout">
-          <img src="images/ordinary/ordinary-03.jpg" alt="Tertiary packaging dieline, alternate">
-          <img src="images/ordinary/ordinary-04.jpg" alt="Dieline on black background">
-          <img src="images/ordinary/ordinary-05.jpg" alt="Folded carton structure on black">
-          <img src="images/ordinary/ordinary-06.jpg" alt="Primary label artwork">
-        </div>
-      </div>
-      <div>
-        <p class="label proj__kind">Packaging &amp; branding · Concept work</p>
-        <h3 class="display proj__title">shaving essentials</h3>
-        <p class="proj__desc">
-          A shaving range extension for The Ordinary — primary labels, secondary cartons and
-          a tertiary kit box, drawn as full dielines rather than mockups. The brand's clinical
-          navy holds; the structure does the selling.
-        </p>
-        <ul class="proj__roles">
-          <li class="is-lead">Packaging design</li>
-          <li>Brand identity</li>
-          <li>Art direction</li>
-        </ul>
-        <div class="pal">
-          <div class="pal__row" role="img" aria-label="Palette: clinical navy, blue grey, sage, white, black">
-            <i style="background:#082450"></i><i style="background:#AABABB"></i><i style="background:#D4D6C8"></i><i style="background:#FFFFFF"></i><i style="background:#111111"></i>
-          </div>
-          <p class="pal__hex"><span>#082450</span><span>#AABABB</span><span>#D4D6C8</span><span>#FFFFFF</span><span>#111111</span></p>
-        </div>
-      </div>
-    </article>
-
-    <article class="proj">
-      <div>
-        <img class="proj__hero" src="images/pov/pov-01.jpg" alt="Sandwich in branded wrap with Hot Takes logotype">
-        <div class="proj__thumbs">
-          <img src="images/pov/pov-02.jpg" alt="Croissant in branded paper bag">
-          <img src="images/pov/pov-03.jpg" alt="Ice Breakers branded glass can on pink">
-          <img src="images/pov/pov-04.jpg" alt="Illustration of a hand holding a taco">
-          <img src="images/pov/pov-05.jpg" alt="Illustration of a figure reclining on a croissant">
-          <img src="images/pov/pov-06.jpg" alt="Nuance Matters sticker logotype">
-        </div>
-      </div>
-      <div>
-        <p class="label proj__kind">Branding &amp; packaging</p>
-        <h3 class="display proj__title">pov</h3>
-        <p class="proj__desc">
-          A café identity where the menu names are the voice — Hot Takes, Ice Breakers,
-          Nuance Matters. Sticker-style logotypes, a cast of illustrated characters, and
-          packaging that keeps the joke running from the wrap to the can.
-        </p>
-        <ul class="proj__roles">
-          <li class="is-lead">Brand identity</li>
-          <li>Packaging design</li>
-          <li>Illustration</li>
-        </ul>
-        <div class="pal">
-          <div class="pal__row" role="img" aria-label="Palette: blush, cream, dusty rose, coral, cocoa">
-            <i style="background:#F0D2D2"></i><i style="background:#FEF1E3"></i><i style="background:#D5A6A2"></i><i style="background:#E4553A"></i><i style="background:#4A3229"></i>
-          </div>
-          <p class="pal__hex"><span>#F0D2D2</span><span>#FEF1E3</span><span>#D5A6A2</span><span>#E4553A</span><span>#4A3229</span></p>
-        </div>
-      </div>
-    </article>
-
-    <article class="proj">
-      <div>
-        <img class="proj__hero" src="images/durva/durva-01.jpg" alt="Durva logotype in olive gold with a magenta accent on black">
-        <div class="proj__thumbs">
-          <img src="images/durva/durva-02.jpg" alt="Durva logotype in magenta">
-          <img src="images/durva/durva-03.jpg" alt="Durva logotype with Festive 26 Vol. 1 lockup">
-        </div>
-      </div>
-      <div>
-        <p class="label proj__kind">Logo &amp; concept · Client work</p>
-        <h3 class="display proj__title">durva, by dorabi</h3>
-        <p class="proj__desc">
-          A logotype for the Festive '26 collection, drawn as a single connected form — the
-          letters lean into each other so the word reads as one gesture rather than five
-          characters. A magenta accent breaks the olive to keep it festive without decorating it.
-        </p>
-        <ul class="proj__roles">
-          <li class="is-lead">Logo design</li>
-          <li>Concept</li>
-          <li>Typography</li>
-        </ul>
-        <div class="pal">
-          <div class="pal__row" role="img" aria-label="Palette: olive gold, antique gold, magenta, plum, black">
-            <i style="background:#655122"></i><i style="background:#9A803A"></i><i style="background:#9B304D"></i><i style="background:#5F2243"></i><i style="background:#0B0B0B"></i>
-          </div>
-          <p class="pal__hex"><span>#655122</span><span>#9A803A</span><span>#9B304D</span><span>#5F2243</span><span>#0B0B0B</span></p>
-        </div>
-      </div>
-    </article>
-
-    <article class="proj">
-      <div>
-        <img class="proj__hero" src="images/nostalgia/nostalgia-01.jpg" alt="Model against a wall in dappled light, pink jacket">
-        <div class="proj__thumbs">
-          <img src="images/nostalgia/nostalgia-02.jpg" alt="Motion-blurred portrait in warm light">
-          <img src="images/nostalgia/nostalgia-03.jpg" alt="Model holding balloons, blurred">
-          <img src="images/nostalgia/nostalgia-04.jpg" alt="Two models beside a weathered building">
-          <img src="images/nostalgia/nostalgia-05.jpg" alt="Model crouching in low warm light">
-          <img src="images/nostalgia/nostalgia-06.jpg" alt="Low-key portrait against darkness">
-        </div>
-      </div>
-      <div>
-        <p class="label proj__kind">Conceptual editorial</p>
-        <h3 class="display proj__title">abandonment &amp; nostalgia</h3>
-        <p class="proj__desc">
-          Shot in the last hour of light against a derelict building, with motion blur and
-          balloons doing the remembering. The makeup is deliberately soft and slightly worn —
-          it had to look like it had been on the face all day, not just applied.
-        </p>
-        <ul class="proj__roles">
-          <li class="is-lead">Makeup</li>
-          <li>Photography</li>
-          <li>Editing</li>
-        </ul>
-        <div class="pal">
-          <div class="pal__row" role="img" aria-label="Palette: blush, warm amber, umber, deep brown, near black">
-            <i style="background:#E0C2B1"></i><i style="background:#B68E72"></i><i style="background:#8F5D3F"></i><i style="background:#573721"></i><i style="background:#150E09"></i>
-          </div>
-          <p class="pal__hex"><span>#E0C2B1</span><span>#B68E72</span><span>#8F5D3F</span><span>#573721</span><span>#150E09</span></p>
-        </div>
-      </div>
-    </article>
-
-    <article class="proj">
-      <div>
-        <img class="proj__hero" src="images/chairs/chairs-01.jpg" alt="Model in red reclining across stacked white plastic chairs on electric blue">
-        <div class="proj__thumbs">
-          <img src="images/chairs/chairs-02.jpg" alt="Group of three models on stacked chairs">
-          <img src="images/chairs/chairs-03.jpg" alt="Model seated on a tower of plastic chairs">
-          <img src="images/chairs/chairs-04.jpg" alt="Model in red seated, legs crossed">
-          <img src="images/chairs/chairs-05.jpg" alt="Model in black lace standing beside chairs">
-          <img src="images/chairs/chairs-06.jpg" alt="Model in leather jacket leaning on chairs">
-        </div>
-      </div>
-      <div>
-        <p class="label proj__kind">Conceptual editorial</p>
-        <h3 class="display proj__title">you can't sit with us</h3>
-        <p class="proj__desc">
-          The white monobloc chair is the most democratic object in the country — everyone
-          has sat in one. Stacked into towers on electric blue and styled like a status
-          symbol, it turns a shoot about exclusion into something you can't take too seriously.
-        </p>
-        <ul class="proj__roles">
-          <li>Credits — confirm with me</li>
-        </ul>
-        <div class="pal">
-          <div class="pal__row" role="img" aria-label="Palette: electric blue, cornflower, white, scarlet, oxblood">
-            <i style="background:#2C52B3"></i><i style="background:#547EDC"></i><i style="background:#F2F3F5"></i><i style="background:#C8202B"></i><i style="background:#55242A"></i>
-          </div>
-          <p class="pal__hex"><span>#2C52B3</span><span>#547EDC</span><span>#F2F3F5</span><span>#C8202B</span><span>#55242A</span></p>
-        </div>
-      </div>
-    </article>
-
-    <article class="proj">
-      <div>
-        <img class="proj__hero" src="images/provocation/provocation-01.jpg" alt="Model standing on construction machinery against sky">
-        <div class="proj__thumbs">
-          <img src="images/provocation/provocation-02.jpg" alt="Model leaning against orange crane arm">
-          <img src="images/provocation/provocation-03.jpg" alt="Night street scene with model in pink">
-          <img src="images/provocation/provocation-04.jpg" alt="Model seated in an inflatable pool on a balcony">
-        </div>
-      </div>
-      <div>
-        <p class="label proj__kind">Conceptual editorial</p>
-        <h3 class="display proj__title">provocation</h3>
-        <p class="proj__desc">
-          Glamour dropped into the places it isn't supposed to be — a construction site,
-          a roadside at night, a paddling pool on a balcony. Makeup built to hold up against
-          hard sun, sodium light and a lot of dust.
-        </p>
-        <ul class="proj__roles">
-          <li class="is-lead">Makeup</li>
-          <li>Art direction</li>
-          <li>Editing</li>
-          <li>Concept (with team)</li>
-        </ul>
-        <div class="pal">
-          <div class="pal__row" role="img" aria-label="Palette: sky, pale grey, safety orange, olive, deep green">
-            <i style="background:#9ABCC5"></i><i style="background:#CDD6D6"></i><i style="background:#E2542A"></i><i style="background:#52493D"></i><i style="background:#21281F"></i>
-          </div>
-          <p class="pal__hex"><span>#9ABCC5</span><span>#CDD6D6</span><span>#E2542A</span><span>#52493D</span><span>#21281F</span></p>
-        </div>
-      </div>
-    </article>
+    <div class="tiles" id="tiles"></div>
 
     <p class="label" style="color:var(--muted);margin-top:clamp(26px,3vw,40px)">
-      Credited by role — I don't claim a whole shoot when I did one part of it.
+      Tap any project to see the full set — credited by role, because I don't claim a whole
+      shoot when I did one part of it.
     </p>
+  </div>
+</section>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-labelledby="lbTitle">
+  <button class="lb__close" type="button" id="lbClose">Close ✕</button>
+  <div class="lb__in" id="lbIn"></div>
+</div>
+
+<script>
+(function(){
+  var P=[
+    {s:'ysl',t:'ysl beauty',k:'Campaign video · Brand collaboration',
+     d:"A social campaign film made with YSL — shot on the coast, cut for the feed. I did the makeup and the edit, which meant building a look that held up in full sun, wind and salt air for a whole day of takes.",
+     r:['Makeup','Editing'],p:['#A9C9DD','#CBD3D6','#C79A78','#B58B42','#14100F'],
+     cover:'images/ysl/ysl-poster.jpg',video:'<video class="proj__hero" controls preload="none" playsinline poster="images/ysl/ysl-poster.jpg"><source src="video/ysl.mp4" type="video/mp4">Your browser cannot play this video.</video>',imgs:[]},
+    {s:'campaign',t:'the ordinary',k:'Campaign · Concept work',
+     d:"A campaign built on the brand's own logic: no gloss, no fantasy, just the product on skin in daylight. Shot, directed and made up by me, so the makeup was planned around what the camera needed rather than fixed afterwards.",
+     r:['Creative direction','Photography','Makeup'],p:['#C4B5AF','#AEA098','#BD8366','#9F6B50','#EFE7E0'],
+     imgs:['images/campaign/campaign-01.jpg','images/campaign/campaign-02.jpg','images/campaign/campaign-03.jpg','images/campaign/campaign-04.jpg','images/campaign/campaign-05.jpg']},
+    {s:'ordinary',t:'shaving essentials',k:'Packaging &amp; branding · Concept work',
+     d:"A shaving range extension for The Ordinary — primary labels, secondary cartons and a tertiary kit box, drawn as full dielines rather than mockups. The brand's clinical navy holds; the structure does the selling.",
+     r:['Packaging design','Brand identity','Art direction'],p:['#082450','#AABABB','#D4D6C8','#FFFFFF','#111111'],
+     imgs:['images/ordinary/ordinary-01.jpg','images/ordinary/ordinary-02.jpg','images/ordinary/ordinary-03.jpg','images/ordinary/ordinary-04.jpg','images/ordinary/ordinary-05.jpg','images/ordinary/ordinary-06.jpg']},
+    {s:'pov',t:'pov',k:'Branding &amp; packaging',
+     d:"A caf&eacute; identity where the menu names are the voice — Hot Takes, Ice Breakers, Nuance Matters. Sticker-style logotypes, a cast of illustrated characters, and packaging that keeps the joke running from the wrap to the can.",
+     r:['Brand identity','Packaging design','Illustration'],p:['#F0D2D2','#FEF1E3','#D5A6A2','#9B2F52','#0B0B0B'],
+     fit:[1,2,3,4],
+     imgs:['images/pov/pov-01.jpg','images/pov/pov-02.jpg','images/pov/pov-03.jpg','images/pov/pov-04.jpg','images/pov/pov-05.jpg','images/pov/pov-06.jpg','images/pov/pov-07.jpg','images/pov/pov-08.jpg','images/pov/pov-09.jpg']},
+    {s:'chairs',t:"you can't sit with us",k:'Conceptual editorial',
+     d:"The white monobloc chair is the most democratic object in the country — everyone has sat in one. Stacked into towers on electric blue and styled like a status symbol, it turns a shoot about exclusion into something you can't take too seriously.",
+     r:['Credits — confirm with me'],p:['#2C52B3','#547EDC','#F2F3F5','#C8202B','#55242A'],
+     imgs:['images/chairs/chairs-01.jpg','images/chairs/chairs-02.jpg','images/chairs/chairs-03.jpg','images/chairs/chairs-04.jpg','images/chairs/chairs-05.jpg','images/chairs/chairs-06.jpg']},
+    {s:'nostalgia',t:'abandonment &amp; nostalgia',k:'Conceptual editorial',
+     d:"Shot in the last hour of light against a derelict building, with motion blur and balloons doing the remembering. The makeup is deliberately soft and slightly worn — it had to look like it had been on the face all day, not just applied.",
+     r:['Makeup','Photography','Editing'],p:['#E0C2B1','#B68E72','#8F5D3F','#573721','#150E09'],
+     imgs:['images/nostalgia/nostalgia-01.jpg','images/nostalgia/nostalgia-02.jpg','images/nostalgia/nostalgia-03.jpg','images/nostalgia/nostalgia-04.jpg','images/nostalgia/nostalgia-05.jpg','images/nostalgia/nostalgia-06.jpg']},
+    {s:'durva',t:'durva, by dorabi',k:'Logo &amp; concept · Client work',
+     d:"A logotype for the Festive '26 collection, drawn as a single connected form — the letters lean into each other so the word reads as one gesture rather than five characters. A magenta accent breaks the olive to keep it festive without decorating it.",
+     r:['Logo design','Concept','Typography'],p:['#655122','#9A803A','#9B304D','#5F2243','#0B0B0B'],
+     fit:[1,2,3],
+     imgs:['images/durva/durva-01.jpg','images/durva/durva-02.jpg','images/durva/durva-03.jpg']},
+    {s:'provocation',t:'provocation',k:'Conceptual editorial',
+     d:"Glamour dropped into the places it isn't supposed to be — a construction site, a roadside at night, a paddling pool on a balcony. Makeup built to hold up against hard sun, sodium light and a lot of dust.",
+     r:['Makeup','Art direction','Editing','Concept (with team)'],p:['#9ABCC5','#CDD6D6','#E2542A','#52493D','#21281F'],
+     imgs:['images/provocation/provocation-01.jpg','images/provocation/provocation-02.jpg','images/provocation/provocation-03.jpg','images/provocation/provocation-04.jpg']}
+  ];
+
+  var tiles=document.getElementById('tiles'),
+      lb=document.getElementById('lb'), lbIn=document.getElementById('lbIn'),
+      lbClose=document.getElementById('lbClose'), lastFocus=null;
+
+  tiles.innerHTML=P.map(function(p,i){
+    var n=p.video ? 'Video' : p.imgs.length+' images';
+    return '<button class="tile" type="button" data-i="'+i+'" aria-label="'+p.t.replace(/&[a-z]+;/g,'')+' — open project">'
+      +'<img class="'+(p.fit&&p.fit.indexOf(1)>-1?'fit':'')+'" src="'+(p.cover||p.imgs[0])+'" alt="">'
+      +'<span class="tile__count">'+n+'</span>'
+      +'<span class="tile__cap"><b>'+p.t+'</b><span>'+p.r[0]+'</span></span></button>';
+  }).join('');
+
+  function pal(a){
+    return '<div class="pal"><div class="pal__row">'+a.map(function(c){
+      return '<i style="background:'+c+'"></i>';}).join('')
+      +'</div><p class="pal__hex">'+a.map(function(c){return '<span>'+c+'</span>';}).join('')+'</p></div>';
+  }
+  function open(i){
+    var p=P[i];
+    lbIn.innerHTML='<div class="lb__head"><div>'
+      +'<p class="label lb__kind">'+p.k+'</p>'
+      +'<h2 class="display lb__title" id="lbTitle">'+p.t+'</h2></div>'
+      +'<div class="lb__meta"><ul class="proj__roles">'
+      + p.r.map(function(r,j){return '<li'+(j===0&&p.r.length>1?' class="is-lead"':'')+'>'+r+'</li>';}).join('')
+      +'</ul>'+pal(p.p)+'</div></div>'
+      +'<p class="lede lb__desc">'+p.d+'</p>'
+      +'<div class="lb__gal">'+(p.video||'')
+      + p.imgs.map(function(src,k){
+          var f=(p.fit&&p.fit.indexOf(k+1)>-1)?' class="fit"':'';
+          return '<img'+f+' src="'+src+'" alt="" loading="lazy">';}).join('')
+      +'</div>';
+    lastFocus=document.activeElement;
+    lb.hidden=false; document.body.classList.add('lb-open');
+    lb.scrollTop=0; lbClose.focus();
+  }
+  function close(){
+    lb.hidden=true; document.body.classList.remove('lb-open'); lbIn.innerHTML='';
+    if(lastFocus) lastFocus.focus();
+  }
+  tiles.addEventListener('click',function(e){
+    var b=e.target.closest('.tile'); if(b) open(+b.dataset.i);
+  });
+  lbClose.addEventListener('click',close);
+  lb.addEventListener('click',function(e){ if(e.target===lb) close(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!lb.hidden) close(); });
+})();
+</script>
+
+<section class="slab slab--paper" style="padding-top:0">
+  <div class="wrap" hidden>
   </div>
 </section>
 
