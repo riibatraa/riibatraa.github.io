@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Creative direction, styling and content across beauty.">
+<meta name="description" content="Riya Batra — creative direction, styling, content and brand design in beauty.">
+<title>Riya Batra · Creative Portfolio</title>
 <title>Riya · Creative Portfolio</title>
 
 <style>
@@ -306,6 +307,87 @@ p{max-width:65ch}
   padding-bottom:1px;
 }
 
+/* =========== PROJECTS =========== */
+.proj{
+  display:grid;
+  grid-template-columns:1.35fr 1fr;
+  gap:clamp(22px,3vw,52px);
+  align-items:start;
+  padding-block:clamp(38px,5vw,74px);
+  border-top:1px solid var(--rule);
+}
+.proj:first-of-type{border-top:0;padding-top:0}
+.proj__hero{
+  width:100%;
+  aspect-ratio:4/5;
+  object-fit:cover;
+  border-radius:18px;
+  display:block;
+  background:var(--frame-a);
+}
+.proj__hero--wide{aspect-ratio:16/9}
+video.proj__hero{width:100%;height:auto;aspect-ratio:16/9;background:#14100F}
+.proj__thumbs{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(0,1fr));
+  gap:8px;
+  margin-top:8px;
+}
+.proj__thumbs img{
+  width:100%;
+  aspect-ratio:1;
+  object-fit:cover;
+  border-radius:9px;
+  display:block;
+  background:var(--frame-a);
+}
+.proj__title{
+  font-size:clamp(2rem,3.9vw,3.2rem);
+  margin:0;
+}
+.proj__kind{margin:0 0 12px;color:var(--muted)}
+.proj__desc{margin:18px 0 0;color:var(--fg);font-size:1rem}
+.proj__roles{
+  margin:20px 0 0;padding:0;list-style:none;
+  display:flex;flex-wrap:wrap;gap:8px;
+}
+.proj__roles li{
+  font-size:.79rem;
+  font-weight:600;
+  letter-spacing:.02em;
+  padding:6px 12px;
+  border:1px solid var(--rule);
+  border-radius:999px;
+}
+.proj__roles li.is-lead{
+  background:var(--fg);
+  color:var(--bg);
+  border-color:var(--fg);
+}
+.pal{margin-top:24px}
+.pal__row{display:flex;gap:0;border-radius:9px;overflow:hidden;height:38px}
+.pal__row i{flex:1;display:block}
+.pal__hex{
+  display:flex;flex-wrap:wrap;gap:6px 14px;
+  margin-top:9px;
+  font-size:.7rem;
+  letter-spacing:.08em;
+  color:var(--muted);
+  font-variant-numeric:tabular-nums;
+}
+
+/* ---- three-column explainer ---- */
+.mech{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:clamp(20px,2.6vw,40px);
+}
+.mech h3{margin:0 0 10px;font-size:1.08rem;font-weight:700;letter-spacing:-.01em}
+.mech p{margin:0;font-size:.94rem}
+.mech .n{
+  display:block;font-size:.72rem;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:12px;
+}
+
 /* =========== CONTENT =========== */
 .content__grid{
   display:grid;
@@ -375,10 +457,10 @@ p{max-width:65ch}
 .claim p{margin:0;color:rgba(27,44,70,.82);font-size:.95rem}
 .pull{
   margin-top:clamp(44px,5.5vw,76px);
-  font-size:clamp(1.9rem,4.6vw,3.6rem);
+  font-size:clamp(1.7rem,4.3vw,3.4rem);
   color:var(--accent-fg);
-  max-width:20ch;
-  line-height:1.05;
+  max-width:22ch;
+  line-height:.94;
 }
 
 /* =========== SERVICES =========== */
@@ -499,6 +581,25 @@ footer{
 }
 
 a{color:inherit}
+.btn{
+  display:inline-block;
+  font-size:.86rem;
+  font-weight:600;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  text-decoration:none;
+  padding:14px 26px;
+  border-radius:999px;
+  background:var(--accent-fg);
+  color:var(--accent);
+  transition:opacity .2s ease,transform .2s ease;
+}
+.btn:hover,.btn:focus-visible{opacity:.86;transform:translateY(-2px)}
+.btn--ghost{
+  background:transparent;
+  color:var(--fg);
+  border:1.5px solid var(--rule);
+}
 a:focus-visible,button:focus-visible{
   outline:3px solid var(--accent);
   outline-offset:3px;
@@ -507,6 +608,9 @@ a:focus-visible,button:focus-visible{
 
 @media (max-width:900px){
   .intro__grid{grid-template-columns:1fr}
+  .proj{grid-template-columns:1fr;gap:22px}
+  .content__split{grid-template-columns:1fr}
+  .mech{grid-template-columns:1fr;gap:26px}
   .work-grid{grid-template-columns:repeat(2,1fr)}
   .claims,.svc,.steps{grid-template-columns:1fr;gap:26px}
   .hero__word--two{width:100%}
@@ -597,41 +701,257 @@ a:focus-visible,button:focus-visible{
       <p class="label" style="color:var(--muted)">Shoots &amp; brand identity · 2023—2026</p>
     </div>
 
-    <div class="work-grid">
-      <article class="work-item">
-        <div class="frame frame--tall"><span>Shoot 01</span></div>
-        <div class="work-cap"><h3>Graphic liner editorial</h3><span>Shoot</span></div>
-        <p class="work-role"><b>Creative direction</b> · Makeup</p>
-      </article>
-      <article class="work-item">
-        <div class="frame frame--tall"><span>Shoot 02</span></div>
-        <div class="work-cap"><h3>Skin-first product story</h3><span>Shoot</span></div>
-        <p class="work-role"><b>Styling</b> · Makeup</p>
-      </article>
-      <article class="work-item">
-        <div class="frame frame--tall"><span>Shoot 03</span></div>
-        <div class="work-cap"><h3>Texture study, six frames</h3><span>Shoot</span></div>
-        <p class="work-role"><b>Creative direction</b> · Styling</p>
-      </article>
-      <article class="work-item">
-        <div class="frame frame--square"><span>Branding 01</span></div>
-        <div class="work-cap"><h3>Identity for a skincare line</h3><span>Branding</span></div>
-        <p class="work-role"><b>Brand identity</b> · Packaging</p>
-      </article>
-      <article class="work-item">
-        <div class="frame frame--square"><span>Packaging 01</span></div>
-        <div class="work-cap"><h3>Carton &amp; label system</h3><span>Packaging</span></div>
-        <p class="work-role"><b>Packaging design</b> · Art direction</p>
-      </article>
-      <article class="work-item">
-        <div class="frame frame--square"><span>Campaign 01</span></div>
-        <div class="work-cap"><h3>Launch campaign visuals</h3><span>Campaign</span></div>
-        <p class="work-role"><b>Creative direction</b> · Styling · Makeup</p>
-      </article>
-    </div>
+    <article class="proj">
+      <div>
+        <video class="proj__hero" controls preload="none" playsinline poster="images/ysl/ysl-poster.jpg"><source src="video/ysl.mp4" type="video/mp4">Your browser cannot play this video.</video>
+      </div>
+      <div>
+        <p class="label proj__kind">Campaign video · Brand collaboration</p>
+        <h3 class="display proj__title">ysl beauty</h3>
+        <p class="proj__desc">
+          A social campaign film made in collaboration with YSL — shot on the coast, cut for
+          the feed. I did the makeup and the edit, which meant building a look that held up
+          in full sun, wind and salt air for a whole day of takes.
+        </p>
+        <ul class="proj__roles">
+          <li class="is-lead">Makeup</li>
+          <li>Editing</li>
+        </ul>
+        <div class="pal">
+          <div class="pal__row" role="img" aria-label="Palette: sky blue, pale steel, warm skin, antique gold, near black">
+            <i style="background:#A9C9DD"></i><i style="background:#CBD3D6"></i><i style="background:#C79A78"></i><i style="background:#B58B42"></i><i style="background:#14100F"></i>
+          </div>
+          <p class="pal__hex"><span>#A9C9DD</span><span>#CBD3D6</span><span>#C79A78</span><span>#B58B42</span><span>#14100F</span></p>
+        </div>
+      </div>
+    </article>
+
+    <article class="proj">
+      <div>
+        <img class="proj__hero" src="images/campaign/campaign-01.jpg" alt="Beauty campaign: serum applied on the cheek, close crop">
+        <div class="proj__thumbs">
+          <img src="images/campaign/campaign-02.jpg" alt="Dropper and serum bottle, macro">
+          <img src="images/campaign/campaign-03.jpg" alt="Model holding serum to face, eyes closed">
+          <img src="images/campaign/campaign-04.jpg" alt="Product held in hand against skin">
+          <img src="images/campaign/campaign-05.jpg" alt="Neck and collarbone with product">
+        </div>
+      </div>
+      <div>
+        <p class="label proj__kind">Campaign · Concept work</p>
+        <h3 class="display proj__title">the ordinary</h3>
+        <p class="proj__desc">
+          A campaign built on the brand's own logic: no gloss, no fantasy, just the product
+          on skin in daylight. Shot, directed and made up by me, so the makeup was planned
+          around what the camera needed rather than fixed afterwards.
+        </p>
+        <ul class="proj__roles">
+          <li class="is-lead">Creative direction</li>
+          <li>Photography</li>
+          <li>Makeup</li>
+        </ul>
+        <div class="pal">
+          <div class="pal__row" role="img" aria-label="Palette: warm greige, taupe, terracotta, deep brown, cream">
+            <i style="background:#C4B5AF"></i><i style="background:#AEA098"></i><i style="background:#BD8366"></i><i style="background:#9F6B50"></i><i style="background:#EFE7E0"></i>
+          </div>
+          <p class="pal__hex"><span>#C4B5AF</span><span>#AEA098</span><span>#BD8366</span><span>#9F6B50</span><span>#EFE7E0</span></p>
+        </div>
+      </div>
+    </article>
+
+    <article class="proj">
+      <div>
+        <img class="proj__hero" src="images/ordinary/ordinary-01.jpg" alt="The Ordinary shaving essentials cartons stacked">
+        <div class="proj__thumbs">
+          <img src="images/ordinary/ordinary-02.jpg" alt="Tertiary packaging dieline with product layout">
+          <img src="images/ordinary/ordinary-03.jpg" alt="Tertiary packaging dieline, alternate">
+          <img src="images/ordinary/ordinary-04.jpg" alt="Dieline on black background">
+          <img src="images/ordinary/ordinary-05.jpg" alt="Folded carton structure on black">
+          <img src="images/ordinary/ordinary-06.jpg" alt="Primary label artwork">
+        </div>
+      </div>
+      <div>
+        <p class="label proj__kind">Packaging &amp; branding · Concept work</p>
+        <h3 class="display proj__title">shaving essentials</h3>
+        <p class="proj__desc">
+          A shaving range extension for The Ordinary — primary labels, secondary cartons and
+          a tertiary kit box, drawn as full dielines rather than mockups. The brand's clinical
+          navy holds; the structure does the selling.
+        </p>
+        <ul class="proj__roles">
+          <li class="is-lead">Packaging design</li>
+          <li>Brand identity</li>
+          <li>Art direction</li>
+        </ul>
+        <div class="pal">
+          <div class="pal__row" role="img" aria-label="Palette: clinical navy, blue grey, sage, white, black">
+            <i style="background:#082450"></i><i style="background:#AABABB"></i><i style="background:#D4D6C8"></i><i style="background:#FFFFFF"></i><i style="background:#111111"></i>
+          </div>
+          <p class="pal__hex"><span>#082450</span><span>#AABABB</span><span>#D4D6C8</span><span>#FFFFFF</span><span>#111111</span></p>
+        </div>
+      </div>
+    </article>
+
+    <article class="proj">
+      <div>
+        <img class="proj__hero" src="images/pov/pov-01.jpg" alt="Sandwich in branded wrap with Hot Takes logotype">
+        <div class="proj__thumbs">
+          <img src="images/pov/pov-02.jpg" alt="Croissant in branded paper bag">
+          <img src="images/pov/pov-03.jpg" alt="Ice Breakers branded glass can on pink">
+          <img src="images/pov/pov-04.jpg" alt="Illustration of a hand holding a taco">
+          <img src="images/pov/pov-05.jpg" alt="Illustration of a figure reclining on a croissant">
+          <img src="images/pov/pov-06.jpg" alt="Nuance Matters sticker logotype">
+        </div>
+      </div>
+      <div>
+        <p class="label proj__kind">Branding &amp; packaging</p>
+        <h3 class="display proj__title">pov</h3>
+        <p class="proj__desc">
+          A café identity where the menu names are the voice — Hot Takes, Ice Breakers,
+          Nuance Matters. Sticker-style logotypes, a cast of illustrated characters, and
+          packaging that keeps the joke running from the wrap to the can.
+        </p>
+        <ul class="proj__roles">
+          <li class="is-lead">Brand identity</li>
+          <li>Packaging design</li>
+          <li>Illustration</li>
+        </ul>
+        <div class="pal">
+          <div class="pal__row" role="img" aria-label="Palette: blush, cream, dusty rose, coral, cocoa">
+            <i style="background:#F0D2D2"></i><i style="background:#FEF1E3"></i><i style="background:#D5A6A2"></i><i style="background:#E4553A"></i><i style="background:#4A3229"></i>
+          </div>
+          <p class="pal__hex"><span>#F0D2D2</span><span>#FEF1E3</span><span>#D5A6A2</span><span>#E4553A</span><span>#4A3229</span></p>
+        </div>
+      </div>
+    </article>
+
+    <article class="proj">
+      <div>
+        <img class="proj__hero" src="images/durva/durva-01.jpg" alt="Durva logotype in olive gold with a magenta accent on black">
+        <div class="proj__thumbs">
+          <img src="images/durva/durva-02.jpg" alt="Durva logotype in magenta">
+          <img src="images/durva/durva-03.jpg" alt="Durva logotype with Festive 26 Vol. 1 lockup">
+        </div>
+      </div>
+      <div>
+        <p class="label proj__kind">Logo &amp; concept · Client work</p>
+        <h3 class="display proj__title">durva, by dorabi</h3>
+        <p class="proj__desc">
+          A logotype for the Festive '26 collection, drawn as a single connected form — the
+          letters lean into each other so the word reads as one gesture rather than five
+          characters. A magenta accent breaks the olive to keep it festive without decorating it.
+        </p>
+        <ul class="proj__roles">
+          <li class="is-lead">Logo design</li>
+          <li>Concept</li>
+          <li>Typography</li>
+        </ul>
+        <div class="pal">
+          <div class="pal__row" role="img" aria-label="Palette: olive gold, antique gold, magenta, plum, black">
+            <i style="background:#655122"></i><i style="background:#9A803A"></i><i style="background:#9B304D"></i><i style="background:#5F2243"></i><i style="background:#0B0B0B"></i>
+          </div>
+          <p class="pal__hex"><span>#655122</span><span>#9A803A</span><span>#9B304D</span><span>#5F2243</span><span>#0B0B0B</span></p>
+        </div>
+      </div>
+    </article>
+
+    <article class="proj">
+      <div>
+        <img class="proj__hero" src="images/nostalgia/nostalgia-01.jpg" alt="Model against a wall in dappled light, pink jacket">
+        <div class="proj__thumbs">
+          <img src="images/nostalgia/nostalgia-02.jpg" alt="Motion-blurred portrait in warm light">
+          <img src="images/nostalgia/nostalgia-03.jpg" alt="Model holding balloons, blurred">
+          <img src="images/nostalgia/nostalgia-04.jpg" alt="Two models beside a weathered building">
+          <img src="images/nostalgia/nostalgia-05.jpg" alt="Model crouching in low warm light">
+          <img src="images/nostalgia/nostalgia-06.jpg" alt="Low-key portrait against darkness">
+        </div>
+      </div>
+      <div>
+        <p class="label proj__kind">Conceptual editorial</p>
+        <h3 class="display proj__title">abandonment &amp; nostalgia</h3>
+        <p class="proj__desc">
+          Shot in the last hour of light against a derelict building, with motion blur and
+          balloons doing the remembering. The makeup is deliberately soft and slightly worn —
+          it had to look like it had been on the face all day, not just applied.
+        </p>
+        <ul class="proj__roles">
+          <li class="is-lead">Makeup</li>
+          <li>Photography</li>
+          <li>Editing</li>
+        </ul>
+        <div class="pal">
+          <div class="pal__row" role="img" aria-label="Palette: blush, warm amber, umber, deep brown, near black">
+            <i style="background:#E0C2B1"></i><i style="background:#B68E72"></i><i style="background:#8F5D3F"></i><i style="background:#573721"></i><i style="background:#150E09"></i>
+          </div>
+          <p class="pal__hex"><span>#E0C2B1</span><span>#B68E72</span><span>#8F5D3F</span><span>#573721</span><span>#150E09</span></p>
+        </div>
+      </div>
+    </article>
+
+    <article class="proj">
+      <div>
+        <img class="proj__hero" src="images/chairs/chairs-01.jpg" alt="Model in red reclining across stacked white plastic chairs on electric blue">
+        <div class="proj__thumbs">
+          <img src="images/chairs/chairs-02.jpg" alt="Group of three models on stacked chairs">
+          <img src="images/chairs/chairs-03.jpg" alt="Model seated on a tower of plastic chairs">
+          <img src="images/chairs/chairs-04.jpg" alt="Model in red seated, legs crossed">
+          <img src="images/chairs/chairs-05.jpg" alt="Model in black lace standing beside chairs">
+          <img src="images/chairs/chairs-06.jpg" alt="Model in leather jacket leaning on chairs">
+        </div>
+      </div>
+      <div>
+        <p class="label proj__kind">Conceptual editorial</p>
+        <h3 class="display proj__title">you can't sit with us</h3>
+        <p class="proj__desc">
+          The white monobloc chair is the most democratic object in the country — everyone
+          has sat in one. Stacked into towers on electric blue and styled like a status
+          symbol, it turns a shoot about exclusion into something you can't take too seriously.
+        </p>
+        <ul class="proj__roles">
+          <li>Credits — confirm with me</li>
+        </ul>
+        <div class="pal">
+          <div class="pal__row" role="img" aria-label="Palette: electric blue, cornflower, white, scarlet, oxblood">
+            <i style="background:#2C52B3"></i><i style="background:#547EDC"></i><i style="background:#F2F3F5"></i><i style="background:#C8202B"></i><i style="background:#55242A"></i>
+          </div>
+          <p class="pal__hex"><span>#2C52B3</span><span>#547EDC</span><span>#F2F3F5</span><span>#C8202B</span><span>#55242A</span></p>
+        </div>
+      </div>
+    </article>
+
+    <article class="proj">
+      <div>
+        <img class="proj__hero" src="images/provocation/provocation-01.jpg" alt="Model standing on construction machinery against sky">
+        <div class="proj__thumbs">
+          <img src="images/provocation/provocation-02.jpg" alt="Model leaning against orange crane arm">
+          <img src="images/provocation/provocation-03.jpg" alt="Night street scene with model in pink">
+          <img src="images/provocation/provocation-04.jpg" alt="Model seated in an inflatable pool on a balcony">
+        </div>
+      </div>
+      <div>
+        <p class="label proj__kind">Conceptual editorial</p>
+        <h3 class="display proj__title">provocation</h3>
+        <p class="proj__desc">
+          Glamour dropped into the places it isn't supposed to be — a construction site,
+          a roadside at night, a paddling pool on a balcony. Makeup built to hold up against
+          hard sun, sodium light and a lot of dust.
+        </p>
+        <ul class="proj__roles">
+          <li class="is-lead">Makeup</li>
+          <li>Art direction</li>
+          <li>Editing</li>
+          <li>Concept (with team)</li>
+        </ul>
+        <div class="pal">
+          <div class="pal__row" role="img" aria-label="Palette: sky, pale grey, safety orange, olive, deep green">
+            <i style="background:#9ABCC5"></i><i style="background:#CDD6D6"></i><i style="background:#E2542A"></i><i style="background:#52493D"></i><i style="background:#21281F"></i>
+          </div>
+          <p class="pal__hex"><span>#9ABCC5</span><span>#CDD6D6</span><span>#E2542A</span><span>#52493D</span><span>#21281F</span></p>
+        </div>
+      </div>
+    </article>
 
     <p class="label" style="color:var(--muted);margin-top:clamp(26px,3vw,40px)">
-      Role credited per project — I don't claim the whole shoot when I did one part of it.
+      Credited by role — I don't claim a whole shoot when I did one part of it.
     </p>
   </div>
 </section>
@@ -644,40 +964,33 @@ a:focus-visible,button:focus-visible{
       <p class="label" style="color:var(--slab-muted)">Written, shot and edited by me</p>
     </div>
 
-    <p class="lede" style="color:var(--slab-fg);max-width:56ch;margin:0">
-      Short-form beauty content where the artistry does the arguing — product on skin, in
-      real light, at real speed. Making it myself is also how I test what the thesis claims.
+    <p class="lede" style="color:var(--slab-fg);max-width:58ch;margin:0">
+      My thesis argues that beauty content lost people by getting louder. So the content
+      I want to make goes the other way — quieter, slower, and willing to say when
+      something doesn't work.
     </p>
 
-    <div class="content__grid">
-      <div class="frame frame--reel"><span>Reel 01</span></div>
-      <div class="frame frame--reel"><span>Reel 02</span></div>
-      <div class="frame frame--reel"><span>Reel 03</span></div>
+    <div class="mech" style="margin-top:clamp(36px,4.4vw,60px)">
+      <div>
+        <span class="n" style="color:var(--slab-muted)">One</span>
+        <h3 style="color:var(--slab-fg)">Product on real skin</h3>
+        <p style="color:var(--slab-muted)">Texture visible, in daylight, at the distance you'd actually see it from. No smoothing, no filter doing the work the formula is being credited for.</p>
+      </div>
+      <div>
+        <span class="n" style="color:var(--slab-muted)">Two</span>
+        <h3 style="color:var(--slab-fg)">Formulation without fear</h3>
+        <p style="color:var(--slab-muted)">Explaining what an ingredient does instead of what it's free from. Fear is easier to communicate than nuance, which is exactly why it shouldn't be the default.</p>
+      </div>
+      <div>
+        <span class="n" style="color:var(--slab-muted)">Three</span>
+        <h3 style="color:var(--slab-fg)">How the look was built</h3>
+        <p style="color:var(--slab-muted)">The process behind a shoot, including what got redone. Showing the work is a more durable trust signal than showing the result.</p>
+      </div>
     </div>
 
-    <div class="content__split">
-      <div>
-        <p class="label" style="color:var(--slab-muted);margin-bottom:16px">Formats</p>
-        <ul class="formats">
-          <li>Application &amp; technique</li>
-          <li>Product breakdowns</li>
-          <li>Get-ready-with-me</li>
-          <li>Shoot behind-the-scenes</li>
-          <li>Trend commentary</li>
-        </ul>
-      </div>
-      <div>
-        <p class="label" style="color:var(--slab-muted);margin-bottom:16px">Where</p>
-        <div class="handles">
-          <a href="#">Instagram &nbsp;→</a>
-          <a href="#">TikTok &nbsp;→</a>
-          <a href="#">YouTube &nbsp;→</a>
-        </div>
-        <p style="color:var(--slab-muted);font-size:.92rem;margin-top:18px;max-width:38ch">
-          Add follower counts here if the numbers help your case — leave them off if they don't.
-        </p>
-      </div>
-    </div>
+    <p style="color:var(--slab-muted);font-size:.94rem;margin-top:clamp(30px,3.4vw,44px)">
+      Currently in production — this section becomes the work itself once it exists.
+    </p>
   </div>
 </section>
 
@@ -687,27 +1000,32 @@ a:focus-visible,button:focus-visible{
     <p class="label thesis__eyebrow">Research</p>
     <h2 class="display thesis__title">the weaponization of transparency</h2>
     <p class="thesis__deck">
-      My thesis looks at what happens when beauty brands turn transparency into a marketing
-      asset — ingredient decks, "honest" reviews, disclosed partnerships — and how that
-      reshapes consumer trust and the credibility of the influencers carrying the message.
+      <em>Trust Issues</em> — a final-year thesis on the weaponization of transparency,
+      consumer trust and influencer credibility in beauty. Mixed-methods, primary data,
+      built around four brands that each solve the trust problem differently:
+      Fae Beauty, The Ordinary, Indē Wild and Huda Beauty.
     </p>
 
     <div class="claims">
       <div class="claim">
-        <h3>Disclosure as performance</h3>
-        <p>How the language of openness gets produced, staged and optimised — and the point at which audiences start reading it as a tactic rather than a fact.</p>
+        <h3>Transparency only works when it feels human</h3>
+        <p>Overly scientific or fear-based communication alienates rather than reassures. Restraint reads as integrity; volume reads as a sales pitch.</p>
       </div>
       <div class="claim">
-        <h3>Where trust actually sits</h3>
-        <p>Trust rarely attaches to the brand. It attaches to a person, a texture, a shade match that worked. Campaigns that miss this spend well and convert badly.</p>
+        <h3>Influencers translate complexity</h3>
+        <p>They convert data into narrative, simplifying what brands overcomplicate. That translation is the product — and it's why credibility sits with the person, not the label.</p>
       </div>
       <div class="claim">
-        <h3>Credibility as a finite resource</h3>
-        <p>Influencer credibility can be spent, and it does not fully replenish. Useful for anyone deciding who should carry a launch, and how often.</p>
+        <h3>Emotional trust beats informational trust</h3>
+        <p>Consumers engage with sincerity more than they respond to evidence. We don't understand ingredients so much as recognise them, and recognition feels like knowledge.</p>
       </div>
     </div>
 
-    <p class="script pull">what reads as honest is not the same as what is honest.</p>
+    <p class="display pull">nothing loud feels honest anymore.</p>
+
+    <p style="margin-top:clamp(30px,3.4vw,44px)">
+      <a class="btn" href="thesis.html">Read the thesis &nbsp;→</a>
+    </p>
   </div>
 </section>
 

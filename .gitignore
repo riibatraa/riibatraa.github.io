@@ -1,1 +1,15 @@
 .DS_Store
+*.mov
+sheets/
+# original full-res source folders (kept locally, not published)
+/a conceptual shoot*/
+/concept and logo design*/
+/hypothetical packaging*/
+/pov branding*/
+/provocation*/
+/the ordinary mock campaign*/
+/thesis work/
+/thesis deck/
+/final paper/
+/you cant sit with us*/
+/ysl campain video*/
