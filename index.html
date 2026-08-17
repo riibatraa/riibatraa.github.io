@@ -831,8 +831,8 @@ a:focus-visible,button:focus-visible{
     {s:'durva',t:'durva, by dorabi',k:'Logo &amp; concept · Client work',
      d:"A logotype for the Festive '26 collection, drawn as a single connected form — the letters lean into each other so the word reads as one gesture rather than five characters. A magenta accent breaks the olive to keep it festive without decorating it.",
      r:['Logo design','Concept','Typography'],p:['#655122','#9A803A','#9B304D','#5F2243','#0B0B0B'],
-     fit:[1,2,3],
-     imgs:['images/durva/durva-01.jpg','images/durva/durva-02.jpg','images/durva/durva-03.jpg']},
+     fit:[1],
+     imgs:['images/durva/durva-01.jpg']},
     {s:'provocation',t:'provocation',k:'Conceptual editorial',
      d:"Glamour dropped into the places it isn't supposed to be — a construction site, a roadside at night, a paddling pool on a balcony. Makeup built to hold up against hard sun, sodium light and a lot of dust.",
      r:['Makeup','Art direction','Editing','Concept (with team)'],p:['#9ABCC5','#CDD6D6','#E2542A','#52493D','#21281F'],
@@ -844,7 +844,7 @@ a:focus-visible,button:focus-visible{
       lbClose=document.getElementById('lbClose'), lastFocus=null;
 
   tiles.innerHTML=P.map(function(p,i){
-    var n=p.video ? 'Video' : p.imgs.length+' images';
+    var n=p.video ? 'Video' : p.imgs.length+(p.imgs.length===1?' image':' images');
     return '<button class="tile" type="button" data-i="'+i+'" aria-label="'+p.t.replace(/&[a-z]+;/g,'')+' — open project">'
       +'<img class="'+(p.fit&&p.fit.indexOf(1)>-1?'fit':'')+'" src="'+(p.cover||p.imgs[0])+'" alt="">'
       +'<span class="tile__count">'+n+'</span>'
