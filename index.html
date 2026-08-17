@@ -155,10 +155,10 @@ p{max-width:65ch}
 .hero__sig{
   position:absolute;
   right:clamp(-6px,2vw,40px);
-  bottom:clamp(-6px,1.5vw,18px);
-  font-size:clamp(3.2rem,9vw,7.6rem);
+  bottom:clamp(4px,2vw,26px);
+  font-size:clamp(1.5rem,3.6vw,3rem);
   color:var(--fg);
-  transform:rotate(-4deg);
+  letter-spacing:-.035em;
   animation:rise 1s cubic-bezier(.2,.7,.2,1) .34s both;
   pointer-events:none;
 }
@@ -168,8 +168,8 @@ p{max-width:65ch}
 }
 .hero__sig{animation-name:rise-sig}
 @keyframes rise-sig{
-  from{opacity:0;transform:translateY(26px) rotate(-4deg)}
-  to{opacity:1;transform:translateY(0) rotate(-4deg)}
+  from{opacity:0;transform:translateY(26px)}
+  to{opacity:1;transform:translateY(0)}
 }
 .hero__foot{
   margin-top:clamp(40px,6vw,76px);
@@ -724,7 +724,7 @@ a:focus-visible,button:focus-visible{
     <div class="hero__mark">
       <h1 class="display hero__word">creative</h1>
       <span class="display hero__word hero__word--two" aria-hidden="true">portfolio</span>
-      <span class="script hero__sig">Riya</span>
+      <span class="display hero__sig">riya batra</span>
     </div>
 
     <div class="hero__foot">
@@ -822,7 +822,7 @@ a:focus-visible,button:focus-visible{
      imgs:['images/pov/pov-01.jpg','images/pov/pov-02.jpg','images/pov/pov-03.jpg','images/pov/pov-04.jpg','images/pov/pov-05.jpg','images/pov/pov-06.jpg','images/pov/pov-07.jpg','images/pov/pov-08.jpg','images/pov/pov-09.jpg','images/pov/pov-10.jpg','images/pov/pov-11.jpg','images/pov/pov-12.jpg','images/pov/pov-15.jpg','images/pov/pov-16.jpg']},
     {s:'chairs',t:"you can't sit with us",k:'Conceptual editorial',
      d:"The white monobloc chair is the most democratic object in the country — everyone has sat in one. Stacked into towers on electric blue and styled like a status symbol, it turns a shoot about exclusion into something you can't take too seriously.",
-     r:['Makeup','Styling'],p:['#2C52B3','#547EDC','#F2F3F5','#C8202B','#55242A'],
+     r:['Styling','Makeup','Art direction'],p:['#2C52B3','#547EDC','#F2F3F5','#C8202B','#55242A'],
      imgs:['images/chairs/chairs-01.jpg','images/chairs/chairs-02.jpg','images/chairs/chairs-03.jpg','images/chairs/chairs-04.jpg','images/chairs/chairs-05.jpg','images/chairs/chairs-06.jpg','images/chairs/chairs-07.jpg','images/chairs/chairs-08.jpg','images/chairs/chairs-09.jpg','images/chairs/chairs-10.jpg','images/chairs/chairs-11.jpg','images/chairs/chairs-12.jpg','images/chairs/chairs-13.jpg','images/chairs/chairs-14.jpg','images/chairs/chairs-15.jpg','images/chairs/chairs-16.jpg','images/chairs/chairs-17.jpg','images/chairs/chairs-18.jpg','images/chairs/chairs-19.jpg','images/chairs/chairs-20.jpg','images/chairs/chairs-21.jpg','images/chairs/chairs-22.jpg','images/chairs/chairs-23.jpg','images/chairs/chairs-24.jpg','images/chairs/chairs-25.jpg','images/chairs/chairs-26.jpg','images/chairs/chairs-27.jpg','images/chairs/chairs-28.jpg','images/chairs/chairs-29.jpg','images/chairs/chairs-30.jpg']},
     {s:'nostalgia',t:'abandonment &amp; nostalgia',k:'Conceptual editorial',
      d:"Mine start to finish — makeup, photography and edit. Shot in the last hour of light against a derelict building, with motion blur and balloons doing the remembering. The makeup is deliberately soft and slightly worn: it had to look like it had been on the face all day, not just applied.",
@@ -830,8 +830,7 @@ a:focus-visible,button:focus-visible{
      imgs:['images/nostalgia/nostalgia-01.jpg','images/nostalgia/nostalgia-02.jpg','images/nostalgia/nostalgia-03.jpg','images/nostalgia/nostalgia-04.jpg','images/nostalgia/nostalgia-05.jpg','images/nostalgia/nostalgia-06.jpg','images/nostalgia/nostalgia-07.jpg','images/nostalgia/nostalgia-08.jpg','images/nostalgia/nostalgia-09.jpg','images/nostalgia/nostalgia-10.jpg','images/nostalgia/nostalgia-11.jpg','images/nostalgia/nostalgia-12.jpg','images/nostalgia/nostalgia-13.jpg','images/nostalgia/nostalgia-14.jpg','images/nostalgia/nostalgia-15.jpg','images/nostalgia/nostalgia-16.jpg','images/nostalgia/nostalgia-17.jpg','images/nostalgia/nostalgia-18.jpg','images/nostalgia/nostalgia-19.jpg']},
     {s:'durva',t:'durva',k:'Collection identity for Dorabi · Live client work',
      d:"Identity for Durva, Dorabi's Festive '26 collection — now live on the brand's site. The logotype is drawn as a single connected form, the letters leaning into each other so the word reads as one gesture rather than five characters, with a magenta accent breaking the olive to keep it festive without decorating it.",
-     r:['Logo design','Concept','Typography'],p:['#655122','#9A803A','#9B304D','#5F2243','#0B0B0B'],
-     fit:[1],
+     r:['Logo design','Concept','Typography'],p:['#F7F1E3','#655122','#9A803A','#9B304D','#5F2243'],
      imgs:['images/durva/durva-01.jpg']},
     {s:'provocation',t:'provocation',k:'Conceptual editorial',
      d:"Glamour dropped into the places it isn't supposed to be — a construction site, a roadside at night, a paddling pool on a balcony. Makeup built to hold up against hard sun, sodium light and a lot of dust.",

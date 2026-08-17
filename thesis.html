@@ -154,10 +154,10 @@ p{max-width:65ch}
 .hero__sig{
   position:absolute;
   right:clamp(-6px,2vw,40px);
-  bottom:clamp(-6px,1.5vw,18px);
-  font-size:clamp(3.2rem,9vw,7.6rem);
+  bottom:clamp(4px,2vw,26px);
+  font-size:clamp(1.5rem,3.6vw,3rem);
   color:var(--fg);
-  transform:rotate(-4deg);
+  letter-spacing:-.035em;
   animation:rise 1s cubic-bezier(.2,.7,.2,1) .34s both;
   pointer-events:none;
 }
@@ -167,8 +167,8 @@ p{max-width:65ch}
 }
 .hero__sig{animation-name:rise-sig}
 @keyframes rise-sig{
-  from{opacity:0;transform:translateY(26px) rotate(-4deg)}
-  to{opacity:1;transform:translateY(0) rotate(-4deg)}
+  from{opacity:0;transform:translateY(26px)}
+  to{opacity:1;transform:translateY(0)}
 }
 .hero__foot{
   margin-top:clamp(40px,6vw,76px);
