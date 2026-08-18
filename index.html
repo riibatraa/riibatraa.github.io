@@ -306,16 +306,21 @@ p{max-width:65ch}
 
 /* =========== TILES =========== */
 .tiles{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:clamp(10px,1.3vw,18px);
+  column-count:4;
+  column-gap:clamp(14px,1.8vw,24px);
+  background-image:repeating-conic-gradient(var(--pattern-a) 0% 25%, var(--pattern-b) 0% 50%);
+  background-size:26px 26px;
+  padding:clamp(18px,2.6vw,36px);
+  border-radius:20px;
 }
-@media (max-width:980px){.tiles{grid-template-columns:repeat(3,1fr)}}
-@media (max-width:680px){.tiles{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:980px){.tiles{column-count:3}}
+@media (max-width:680px){.tiles{column-count:2}}
+@media (max-width:440px){.tiles{column-count:1}}
 
 .tile{
   position:relative;
   display:block;
+  width:100%;
   padding:0;
   border:0;
   background:none;
@@ -326,18 +331,17 @@ p{max-width:65ch}
   border-radius:14px;
   overflow:hidden;
   isolation:isolate;
+  break-inside:avoid;
+  margin-bottom:clamp(14px,1.8vw,24px);
+  box-shadow:0 14px 30px rgba(8,14,10,.32);
 }
 .tile img{
   width:100%;
-  aspect-ratio:4/5;
-  object-fit:cover;
+  height:auto;
   display:block;
   background:var(--frame-a);
   transition:transform .5s cubic-bezier(.2,.7,.2,1),filter .3s ease;
 }
-/* wordmarks and dielines must not be cropped: fit them inside the tile */
-.tile img.fit{object-fit:contain;background:#3D111E;padding:11% 8% 16%}
-.lb__gal img.fit{background:#3D111E;object-fit:contain;aspect-ratio:16/10}
 .tile:hover img,.tile:focus-visible img{transform:scale(1.045)}
 .tile__cap{
   position:absolute;inset:auto 0 0 0;
@@ -380,12 +384,12 @@ p{max-width:65ch}
 .lb__kind{margin:0 0 10px;color:var(--slab-muted)}
 .lb__desc{max-width:60ch;margin:0;color:var(--slab-fg)}
 .lb__meta{display:flex;flex-direction:column;gap:16px;min-width:220px}
-.lb__gal{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(10px,1.4vw,18px);margin-top:clamp(24px,3vw,40px)}
-.lb__gal img,.lb__gal video{width:100%;border-radius:14px;display:block;background:var(--frame-b)}
-.lb__gal > *:first-child{grid-column:1 / -1}
+.lb__gal{column-count:2;column-gap:clamp(10px,1.4vw,18px);margin-top:clamp(24px,3vw,40px)}
+.lb__gal img,.lb__gal video{width:100%;border-radius:14px;display:block;background:var(--frame-b);margin-bottom:clamp(10px,1.4vw,18px);break-inside:avoid}
+.lb__gal > *:first-child{column-span:all}
 @media (max-width:700px){
   .lb__head{grid-template-columns:1fr}
-  .lb__gal{grid-template-columns:1fr}
+  .lb__gal{column-count:1}
 }
 body.lb-open{overflow:hidden}
 
@@ -842,7 +846,6 @@ a:focus-visible,button:focus-visible{
      d:"A caf&eacute; identity where the menu names are the voice: Hot Takes, Ice Breakers, Nuance Matters. Sticker-style logotypes and packaging that keeps the joke running from the wrap to the can.",
      r:['Brand identity','Packaging design','Illustration'],p:['#F0D2D2','#FEF1E3','#D5A6A2','#9B2F52','#3D111E'],
      cover:'images/pov/pov-01.jpg',
-     fit:[2,3,4,5,7],
      imgs:['images/pov/pov-01.jpg','images/pov/pov-02.jpg','images/pov/pov-03.jpg','images/pov/pov-04.jpg','images/pov/pov-05.jpg','images/pov/pov-06.jpg','images/pov/pov-07.jpg']},
     {s:'chairs',t:"you can't sit with us",k:'Conceptual editorial',
      d:"The white monobloc chair is the most democratic object in the country. Everyone has sat in one. Stacked into towers on electric blue and styled like a status symbol, it turns a shoot about exclusion into something you can't take too seriously.",
@@ -852,16 +855,11 @@ a:focus-visible,button:focus-visible{
     {s:'nostalgia',t:'abandonment &amp; nostalgia',k:'Conceptual editorial',
      d:"Mine start to finish: makeup, photography and edit. Shot in the last hour of light against a derelict building, with motion blur and balloons doing the remembering. The makeup is deliberately soft and slightly worn: it had to look like it had been on the face all day, not just applied.",
      r:['Makeup','Photography','Editing'],p:['#E0C2B1','#B68E72','#8F5D3F','#573721','#150E09'],
-     imgs:['images/nostalgia/nostalgia-01.jpg','images/nostalgia/nostalgia-02.jpg','images/nostalgia/nostalgia-03.jpg','images/nostalgia/nostalgia-04.jpg','images/nostalgia/nostalgia-05.jpg','images/nostalgia/nostalgia-06.jpg','images/nostalgia/nostalgia-07.jpg','images/nostalgia/nostalgia-08.jpg','images/nostalgia/nostalgia-09.jpg','images/nostalgia/nostalgia-10.jpg','images/nostalgia/nostalgia-11.jpg','images/nostalgia/nostalgia-12.jpg','images/nostalgia/nostalgia-13.jpg','images/nostalgia/nostalgia-14.jpg','images/nostalgia/nostalgia-15.jpg','images/nostalgia/nostalgia-16.jpg','images/nostalgia/nostalgia-17.jpg','images/nostalgia/nostalgia-18.jpg','images/nostalgia/nostalgia-19.jpg']},
+     imgs:['images/nostalgia/nostalgia-01.jpg','images/nostalgia/nostalgia-02.jpg','images/nostalgia/nostalgia-03.jpg','images/nostalgia/nostalgia-04.jpg','images/nostalgia/nostalgia-05.jpg','images/nostalgia/nostalgia-06.jpg','images/nostalgia/nostalgia-11.jpg','images/nostalgia/nostalgia-12.jpg','images/nostalgia/nostalgia-13.jpg','images/nostalgia/nostalgia-16.jpg']},
     {s:'durva',t:'durva',k:'Collection identity for Dorabi · Live client work',
      d:"Identity for Durva, Dorabi's Festive '26 collection, now live on the brand's site. The logotype is drawn as a single connected form, the letters leaning into each other so the word reads as one gesture rather than five characters, with a magenta accent breaking the olive to keep it festive without decorating it.",
      r:['Logo design','Concept','Typography'],p:['#F7F1E3','#655122','#9A803A','#9B304D','#5F2243'],
      imgs:['images/durva/durva-01.jpg']},
-    {s:'amarris',t:'amarris',k:'Brand identity &amp; packaging · Live client work',
-     d:"A full brand system for Amarris, spanning four product lines: Naaz, Naqsh, Nuri and Riwaayat. Each line gets its own name, tagline and tone, while the wordmark, ribboned monogram and packaging language hold them together as one house. Built from the logotype down to the tags, cartons and the thank-you card inside the box.",
-     r:['Brand identity','Packaging design','Art direction'],p:['#F7F3EC','#E4DDD5','#B7A28C','#39110F','#232120'],
-     cover:'images/amarris/amarris-01.jpg',
-     imgs:['images/amarris/amarris-01.jpg','images/amarris/amarris-02.jpg','images/amarris/amarris-03.jpg','images/amarris/amarris-04.jpg','images/amarris/amarris-05.jpg','images/amarris/amarris-06.jpg']},
     {s:'provocation',t:'provocation',k:'Conceptual editorial',
      d:"Glamour dropped into the places it isn't supposed to be: a construction site, a roadside at night, a paddling pool on a balcony. Makeup built to hold up against hard sun, sodium light and a lot of dust.",
      r:['Makeup','Art direction','Editing','Concept (with team)'],p:['#9ABCC5','#CDD6D6','#E2542A','#52493D','#21281F'],
@@ -875,7 +873,7 @@ a:focus-visible,button:focus-visible{
   tiles.innerHTML=P.map(function(p,i){
     var n=p.video ? 'Video' : p.imgs.length+(p.imgs.length===1?' image':' images');
     return '<button class="tile" type="button" data-i="'+i+'" aria-label="'+p.t.replace(/&[a-z]+;/g,'')+', open project">'
-      +'<img class="'+(p.fit&&p.fit.indexOf(1)>-1?'fit':'')+'" src="'+(p.cover||p.imgs[0])+'" alt="">'
+      +'<img src="'+(p.cover||p.imgs[0])+'" alt="">'
       +'<span class="tile__count">'+n+'</span>'
       +'<span class="tile__cap"><b>'+p.t+'</b><span>'+p.r[0]+'</span></span></button>';
   }).join('');
@@ -896,8 +894,7 @@ a:focus-visible,button:focus-visible{
       +'<p class="lede lb__desc">'+p.d+'</p>'
       +'<div class="lb__gal">'+(p.video||'')
       + p.imgs.map(function(src,k){
-          var f=(p.fit&&p.fit.indexOf(k+1)>-1)?' class="fit"':'';
-          return '<img'+f+' src="'+src+'" alt="" loading="lazy">';}).join('')
+          return '<img src="'+src+'" alt="" loading="lazy">';}).join('')
       +'</div>';
     lastFocus=document.activeElement;
     lb.hidden=false; document.body.classList.add('lb-open');
