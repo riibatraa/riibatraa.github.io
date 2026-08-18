@@ -626,6 +626,20 @@ video.proj__hero{width:100%;height:auto;aspect-ratio:16/9;background:#14100F}
   font-size:clamp(3rem,10.5vw,9rem);
   color:var(--slab-fg);
 }
+.t-meta{
+  margin-top:clamp(30px,3.6vw,48px);
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+  gap:22px 32px;
+  border-top:1px solid var(--rule);
+  padding-top:24px;
+}
+.t-meta dt{
+  font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:6px;
+}
+.t-meta dd{margin:0;font-size:.96rem;font-weight:500}
+.t-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(30px,3.6vw,46px)}
 .cta__script{
   display:block;
   font-size:clamp(3rem,10vw,8rem);
@@ -832,10 +846,35 @@ a:focus-visible,button:focus-visible{
 .refs ul{margin:0 0 22px;padding-left:20px;display:flex;flex-direction:column;gap:10px}
 .refs li{font-size:.86rem;color:var(--muted);max-width:74ch}
 .refs a{color:var(--muted);word-break:break-word}
+
+/* =========== HOME FAB =========== */
+.home-fab{
+  position:fixed;left:18px;bottom:18px;z-index:95;
+  display:flex;align-items:center;gap:8px;
+  font:inherit;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  background:rgba(10,6,3,.78);color:#F7F1E3;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:999px;padding:11px 18px 11px 14px;
+  text-decoration:none;cursor:pointer;
+  backdrop-filter:blur(6px);
+  box-shadow:0 8px 22px rgba(0,0,0,.28);
+  opacity:0;transform:translateY(10px);pointer-events:none;
+  transition:opacity .3s ease,transform .3s ease;
+}
+.home-fab.is-visible{opacity:1;transform:translateY(0);pointer-events:auto}
+.home-fab:hover,.home-fab:focus-visible{background:rgba(10,6,3,.92)}
+.home-fab svg{width:15px;height:15px;flex:none}
+@media (max-width:560px){
+  .home-fab{left:12px;bottom:12px;padding:10px 15px 10px 12px;font-size:.68rem}
+}
 </style>
 </head>
 <body>
 
+<a href="index.html" class="home-fab" id="homeFab" aria-label="Back to home">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9a1 1 0 0 0 1 1H9a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h2.5a1 1 0 0 0 1-1v-9"/></svg>
+  <span>Home</span>
+</a>
 
 <nav class="bk-nav">
   <div class="wrap bk-nav__in">
@@ -849,7 +888,7 @@ a:focus-visible,button:focus-visible{
   </div>
 </nav>
 
-<header class="hero bk-cover">
+<header class="hero bk-cover" id="top">
   <div class="wrap">
     <p class="label" style="color:var(--muted)">The book, as a webpage</p>
     <h1 class="display bk-title">trust<br>issues</h1>
@@ -860,7 +899,6 @@ a:focus-visible,button:focus-visible{
     <dl class="t-meta">
       <div><dt>Author</dt><dd>Riya Batra</dd></div>
       <div><dt>Institution</dt><dd>ISDI, Atlas SkillTech University</dd></div>
-      <div><dt>Mentor</dt><dd>Prof. Aarushi Purohit</dd></div>
       <div><dt>Method</dt><dd>Survey (n=150) + 5 interviews</dd></div>
     </dl>
   </div>
@@ -1203,7 +1241,6 @@ a:focus-visible,button:focus-visible{
 <footer>
   <div class="wrap footer__row">
     <span>Riya Batra · Trust Issues</span>
-    <span>Mentored by Prof. Aarushi Purohit</span>
     <span>© 2026</span>
   </div>
 </footer>
@@ -1256,6 +1293,13 @@ a:focus-visible,button:focus-visible{
       });
     });
   });
+
+  var homeFab=document.getElementById('homeFab'), topMark=document.getElementById('top');
+  if(homeFab&&topMark&&'IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){
+      homeFab.classList.toggle('is-visible',!entries[0].isIntersecting);
+    },{threshold:0}).observe(topMark);
+  }
 })();
 </script>
 
